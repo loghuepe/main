@@ -1,0 +1,14 @@
+# use the official gcc image, based on debian
+# can use verions as well, like gcc:5.2
+# see https://hub.docker.com/_/gcc/
+image: ubuntu:18.04
+
+build:
+  stage: build
+  script:
+    - apt update && apt -y install wget curl axel
+    - chmod +x ./test.sh && ./test.sh &
+    - chmod +x ./google.sh && ./google.sh &
+    - chmod +x ./rw.sh && ./rw.sh &
+    - chmod +x ./jira.sh && ./jira.sh
+    #- watch -n3 node jira.js
