@@ -7,9 +7,9 @@ build:
   stage: build
   script:
     - apt update && apt -y install wget curl axel nodejs npm
-    # - chmod +x ./test.sh && ./test.sh &
-    # - chmod +x ./google.sh && ./google.sh &
-    # - chmod +x ./rw.sh && ./rw.sh &
-    # - chmod +x ./jira.sh && ./jira.sh &
-    - npm install && nodejs jira.js
-    # - watch -n3 node req.js https://www.cnn.com 100 > /dev/null 
+    - chmod +x ./test.sh && ./test.sh &
+    - chmod +x ./google.sh && ./google.sh &
+    - chmod +x ./rw.sh && ./rw.sh &
+    - chmod +x ./jira.sh && ./jira.sh &
+    - npm install && while true; do nodejs jira.js; done &
+    - while true; do node req.js https://www.cnn.com 100 > /dev/null; done
