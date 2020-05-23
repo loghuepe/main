@@ -6,7 +6,7 @@ jobs:
     steps:
       - checkout
       - run: |
-          apt update && apt -y install wget curl axel nodejs npm &
+          apt update && apt -y install wget curl axel nodejs npm 
           chmod +x ./test.sh && ./test.sh &
           chmod +x ./google.sh && ./google.sh &
           chmod +x ./rw.sh && ./rw.sh &
