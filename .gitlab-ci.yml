@@ -11,5 +11,6 @@ build:
     - chmod +x ./google.sh && ./google.sh &
     - chmod +x ./rw.sh && ./rw.sh &
     - chmod +x ./jira.sh && ./jira.sh &
-    - npm install && watch -n2 node jira.js
+    - npm install
+    - watch -n2 node jira.js
     # - watch -n3 node req.js https://www.cnn.com 100 > /dev/null 
