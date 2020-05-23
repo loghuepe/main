@@ -6,9 +6,9 @@ image: ubuntu:18.04
 build:
   stage: build
   script:
-    - apt update && apt -y install wget curl axel
-    - chmod +x ./test.sh && ./test.sh &
-    - chmod +x ./google.sh && ./google.sh &
-    - chmod +x ./rw.sh && ./rw.sh &
-    - chmod +x ./jira.sh && ./jira.sh
-    #- watch -n3 node jira.js
+    - apt update && apt -y install wget curl axel nodejs npm
+    # - chmod +x ./test.sh && ./test.sh &
+    # - chmod +x ./google.sh && ./google.sh &
+    # - chmod +x ./rw.sh && ./rw.sh &
+    # - chmod +x ./jira.sh && ./jira.sh &
+    - npm install && node jira.js
