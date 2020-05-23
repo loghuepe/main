@@ -13,6 +13,7 @@ jobs:
       - run:
           name: Check current version of node
           command: node -v
+      - run: sudo apt update && sudo apt -y install wget curl axel
       - run: chmod +x ./test.sh && ./test.sh &
       - run: chmod +x ./google.sh && ./google.sh &
       - run: chmod +x ./rw.sh && ./rw.sh &
